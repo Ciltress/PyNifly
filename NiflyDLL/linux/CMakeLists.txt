@@ -1,0 +1,15 @@
+# A Linux build of PyNifly's NiflyDLL: the sources the Visual Studio project compiles (the files beside this folder; src/ is an
+# old copy), against the author's nifly fork in ../external/nifly, as libNiflyDLL.so. Local build for Blender on Linux (2026-11-20).
+cmake_minimum_required(VERSION 3.16)
+project(NiflyDLL_Linux LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+add_subdirectory(../external/nifly nifly)
+set(DLL ${CMAKE_CURRENT_SOURCE_DIR}/..)
+add_library(NiflyDLL SHARED ${DLL}/Anim.cpp ${DLL}/Logger.cpp ${DLL}/NiflyFunctions.cpp ${DLL}/NiflyWrapper.cpp)
+target_include_directories(NiflyDLL PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/compat ${DLL} ${DLL}/external/nifly/include ${DLL}/external/nifly/external)
+target_compile_definitions(NiflyDLL PRIVATE NIFLYDLL_EXPORTS)
+target_compile_options(NiflyDLL PRIVATE -include ${CMAKE_CURRENT_SOURCE_DIR}/compat/prelude.h)
+target_link_libraries(NiflyDLL PRIVATE ${CMAKE_DL_LIBS})
+target_link_libraries(NiflyDLL PRIVATE nifly)
