@@ -3,6 +3,8 @@ Export/Import tools between Blender and the Nif format, using Bodyslide/Outfit S
 
 Windows only.
 
+> **Linux:** this fork's `linux-build` branch adds an unofficial Linux build — see [LINUX.md](LINUX.md). It is not supported by PyNifly's author; report Linux problems in this fork.
+
 Full documentation in the wiki.
 
 **Features**
