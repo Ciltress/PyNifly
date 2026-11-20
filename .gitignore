@@ -119,3 +119,12 @@ NiflyDLL/out/
 NiflyDLL/NiflyDLL/Test/
 *.vcxproj.user
 NiflyDLL/staging/
+
+# Linux build: the nifly fork NiflyDLL/linux/install-blender.sh clones
+NiflyDLL/external/
+
+# graphify (fork only): the code graph `graphify query` reads, and its community names. The rest `graphify update .`
+# rebuilds.
+graphify-out/*
+!graphify-out/graph.json
+!graphify-out/.graphify_labels.json
